@@ -1,13 +1,25 @@
-<script setup>
+<script >
+import AppHeader from './components/AppHeader.vue';
 
+import { store } from './store.js';
+
+export default {
+  components: {
+    AppHeader,
+
+  },
+  data() {
+    return {
+      store
+    }
+  }
+}
 </script>
 
 <template>
-  <div>
-
-  </div>
+  <AppHeader />
 </template>
 
-<style scoped>
-
+<style lang="scss">
+@use './styles/general.scss'
 </style>
