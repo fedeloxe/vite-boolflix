@@ -1,6 +1,22 @@
 <script>
+import { store } from '../store';
+import axios from 'axios';
 export default {
 
+    data() {
+        return {
+            store,
+            inputText: '',
+        }
+    },
+    methods: {
+        search(input) {
+            let apiCall = store.url + input;
+            axios.get(apiCall).then((response) => {
+                store.film = response.data.results
+            })
+        }
+    }
 }
 </script>
 <template>
@@ -9,8 +25,10 @@ export default {
         <div class="container h-100">
             <div class="d-flex justify-content-center h-100">
                 <div class="searchbar">
-                    <input class="search_input" type="text" name="" placeholder="Search...">
-                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                    <input class="search_input" type="text" name="" placeholder="Search..." id="search"
+                        aria-label="Ricerca il film" v-model="inputText" @keyup.enter="search(inputText)">
+                    <button href="#" class="search_icon" @click="search(inputText)"><i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -70,7 +88,7 @@ html {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    color: white;
+    color: #e74c3c;
     text-decoration: none;
 }
 </style>
