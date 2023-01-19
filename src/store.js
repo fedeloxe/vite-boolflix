@@ -6,4 +6,5 @@ export const store = reactive({
     flagApi: 'https://countryflagsapi.com/png/ae',
     film: [],
     serie: [],
+    inputText: ''
 })

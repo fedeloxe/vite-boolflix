@@ -1,8 +1,30 @@
 <script>
 import AppSearch from './AppSearch.vue';
+import { store } from '../store.js'
+import axios from 'axios';
 export default {
     components: {
         AppSearch,
+    },
+    data() {
+        return {
+            store,
+        }
+    },
+    // created() {
+    //     this.searchAll()
+    // },
+    methods: {
+        searchAll() {
+            let urlFilm = store.urlFilm + store.inputText;
+            axios.get(urlFilm).then((response) => {
+                store.film = response.data.results
+            });
+            let urlSerie = store.urlSerie + store.inputText;
+            axios.get(urlSerie).then((response) => {
+                store.serie = response.data.results
+            });
+        }
     }
 
 }
@@ -13,7 +35,7 @@ export default {
             <img src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="netflix-logo">
         </div>
         <div class="search">
-            <AppSearch />
+            <AppSearch @search="searchAll" />
             <a href=""><i class="fa-solid fa-user-large"></i></a>
 
         </div>

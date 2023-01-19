@@ -10,15 +10,9 @@ export default {
         }
     },
     methods: {
-        search(input) {
-            let urlFilm = store.urlFilm + input;
-            axios.get(urlFilm).then((response) => {
-                store.film = response.data.results
-            });
-            let urlSerie = store.urlSerie + input;
-            axios.get(urlSerie).then((response) => {
-                store.serie = response.data.results
-            });
+        searchMedia() {
+            this.$emit('search')
+
         }
     }
 }
@@ -30,8 +24,8 @@ export default {
             <div class="d-flex justify-content-center h-100">
                 <div class="searchbar">
                     <input class="search_input" type="text" name="" placeholder="Search..." id="search"
-                        aria-label="Ricerca il film" v-model="inputText" @keyup.enter="search(inputText)">
-                    <button href="#" class="search_icon" @click="search(inputText)"><i class="fas fa-search"></i>
+                        aria-label="Ricerca il film" v-model="store.inputText" @keyup.enter="$emit('search')">
+                    <button class="search_icon" @click="searchMedia"><i class="fas fa-search"></i>
                     </button>
                 </div>
             </div>
