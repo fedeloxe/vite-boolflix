@@ -9,13 +9,13 @@ export default {
         posterImage(value) {
             if (value.poster_path == null) {
                 return `https://media0.giphy.com/media/dzoRHDPScwgiA/giphy.gif?cid=790b761135a5e4136f832b474ace5ac46e7b9a286ad5b0ce&rid=giphy.gif&ct=g`
-
-
             }
             else {
                 return `https://image.tmdb.org/t/p/w342${value.poster_path}`
-
             }
+        },
+        calcStars() {
+            return Math.round(this.infoSerie.vote_average / 2)
         }
 
     }
@@ -38,8 +38,10 @@ export default {
                             ? `https://www.countryflagicons.com/FLAT/64/KR.png`
                             : `https://www.countryflagicons.com/FLAT/64/${infoSerie.original_language.toUpperCase()}.png`
             " :alt="infoSerie.original_language" />
-
-
+            <p>
+                <i v-for="n in calcStars()" :key="n" class="fa-solid fa-star"></i>
+                <i v-for="n in 5 - calcStars()" :key="n" class="fa-regular fa-star"></i>
+            </p>
         </div>
 
     </div>
