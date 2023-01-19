@@ -11,10 +11,14 @@ export default {
     },
     methods: {
         search(input) {
-            let apiCall = store.url + input;
-            axios.get(apiCall).then((response) => {
+            let urlFilm = store.urlFilm + input;
+            axios.get(urlFilm).then((response) => {
                 store.film = response.data.results
-            })
+            });
+            let urlSerie = store.urlSerie + input;
+            axios.get(urlSerie).then((response) => {
+                store.serie = response.data.results
+            });
         }
     }
 }

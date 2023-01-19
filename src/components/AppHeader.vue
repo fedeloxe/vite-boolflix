@@ -24,6 +24,8 @@ export default {
 
 <style lang="scss" scoped>
 header {
+    height: 15vh;
+
     display: flex;
     justify-content: space-between;
     background-color: #1b1b1b;
