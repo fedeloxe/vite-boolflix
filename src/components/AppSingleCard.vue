@@ -40,7 +40,6 @@ export default {
             <p>
                 <i v-for="n in calcStars()" :key="n" class="fa-solid fa-star"></i>
                 <i v-for="n in 5 - calcStars()" :key="n" class="fa-regular fa-star"></i>
-
             </p>
 
 
