@@ -17,13 +17,15 @@ export default {
 }
 </script>
 <template>
+
+
     <main>
 
-        <h3>Film:</h3>
+
         <div class="card-cont-film">
             <AppSingleCard v-for="(item, index) in store.film" :key="index" :info="item" />
         </div>
-        <h3>Serie:</h3>
+
         <div class="card-cont-serie">
             <AppSingleCardSerie v-for="(item, index) in store.serie" :key="index" :infoSerie="item" />
 
@@ -32,32 +34,29 @@ export default {
 
 
     </main>
+
+
 </template>
 <style lang="scss" scoped>
-@use '../styles/partials/mixins' as*;
-
 main {
     padding-top: 20px;
-    height: 90%;
-    background-color: $black;
+    height: 85vh;
 
     h3 {
         color: white;
     }
 
-
-
-
     .card-cont-film {
         display: flex;
         overflow-x: auto;
+        height: 440px;
     }
 
     .card-cont-serie {
+        margin-top: 10px;
         display: flex;
         overflow-x: auto;
+        height: 440px
     }
-
-
 }
 </style>
