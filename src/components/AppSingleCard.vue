@@ -4,6 +4,7 @@ export default {
     name: 'card',
     props: {
         info: Object
+
     },
     methods: {
         posterImage(value) {
@@ -16,7 +17,7 @@ export default {
         },
         calcStars() {
             return Math.round(this.info.vote_average / 2)
-        }
+        },
     }
 }
 </script>

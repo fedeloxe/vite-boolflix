@@ -1,6 +1,6 @@
 <script >
 import AppHeader from './components/AppHeader.vue';
-import AppContent from './components/AppContent.vue'
+import AppContent from './components/AppContent.vue';
 
 
 import { store } from './store.js';
@@ -16,11 +16,13 @@ export default {
     return {
       store
     }
-  }
+  },
+
 }
 </script>
 
 <template>
+
   <AppHeader />
   <AppContent />
 

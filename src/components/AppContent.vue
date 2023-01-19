@@ -1,12 +1,13 @@
 <script>
-
+import AppLoader from './AppLoader.vue';
 import AppSingleCard from './AppSingleCard.vue';
 import AppSingleCardSerie from './AppSingleCardSerie.vue';
 import { store } from '../store.js';
 export default {
     components: {
         AppSingleCard,
-        AppSingleCardSerie
+        AppSingleCardSerie,
+        AppLoader
     },
     data() {
         return {
@@ -17,24 +18,29 @@ export default {
 }
 </script>
 <template>
+    <div v-if="store.loading">
+        <AppLoader />
+    </div>
+
+    <div v-else>
+
+        <main>
 
 
-    <main>
+            <div class="card-cont-film">
+                <AppSingleCard v-for="(item, index) in store.film" :key="index" :info="item" />
+            </div>
 
+            <div class="card-cont-serie">
+                <AppSingleCardSerie v-for="(item, index) in store.serie" :key="index" :infoSerie="item" />
 
-        <div class="card-cont-film">
-            <AppSingleCard v-for="(item, index) in store.film" :key="index" :info="item" />
-        </div>
-
-        <div class="card-cont-serie">
-            <AppSingleCardSerie v-for="(item, index) in store.serie" :key="index" :infoSerie="item" />
-
-        </div>
+            </div>
 
 
 
-    </main>
+        </main>
 
+    </div>
 
 </template>
 <style lang="scss" scoped>

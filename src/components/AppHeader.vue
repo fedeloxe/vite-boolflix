@@ -19,10 +19,12 @@ export default {
             let urlFilm = store.urlFilm + store.inputText;
             axios.get(urlFilm).then((response) => {
                 store.film = response.data.results
+                store.loading = false
             });
             let urlSerie = store.urlSerie + store.inputText;
             axios.get(urlSerie).then((response) => {
                 store.serie = response.data.results
+                store.loading = false
             });
         }
     }
